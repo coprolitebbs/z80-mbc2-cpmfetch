@@ -12,6 +12,7 @@ int main(int argc, char *argv[]){
 	
 	lob = bdosr & 0xFF;
 	hib = (bdosr >> 8) & 0xFF;
+	
 	osver=11;
 	for(i=0;i<11;i++){
 		if(os_bts[i] == lob) { 
@@ -19,13 +20,14 @@ int main(int argc, char *argv[]){
 		}
 	}
 	
-	cpu = 3;
+	/*cpu = 3;
 	nbl = hib >> 4;
 	for(i=0;i<3;i++){
 		if(cpu_bts[i] == nbl) { 
 			cpu = i;
 		}
-	}
+	}*/
+	cpu = cpuid();
 	
 	printf("%s CPU: %s\n",logo[0],cpu_names[cpu]);
 	printf("%s OS: %s\n",logo[1],os_names[osver]);
